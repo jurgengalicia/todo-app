@@ -18,7 +18,57 @@ body{
     width: 100%;
     max-width: 700px;
     margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #333;
+    margin: auto;
+    padding-top:4rem;
 }
+
+.app-title{
+    text-align:center;
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+svg{
+    width: 64px;
+    height: 64px;
+}
+
+.todo-list{
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.todo-item{
+    margin-bottom: 10px;
+    width: 100%;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+
+.todo-item span{
+    flex-grow: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 22px;
+}
+
+.done span{
+    text-decoration: line-through;
+    user-select: none;
+}
+
+input[type="checkbox"]{
+    display:none;
+}
+input:focus{
+    outline:none;
+    background-color: #d4e7d5
+}
+
 
 .icon{
     font-size: 7rem;
