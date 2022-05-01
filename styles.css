@@ -69,6 +69,41 @@ input:focus{
     background-color: #d4e7d5
 }
 
+.tick{
+    width:30px;
+    height:30px;
+    border: 3px solid #333;
+    border-radius:50%;
+    display: inline-flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.tick::before{
+    display:inline;
+}
+
+.delete-todo{
+    border:none;
+    background-color:transparent;
+    outline: none;
+    cursor:pointer;
+}
+
+.delete-todo svg{
+    width:30px;
+    height:30px;
+    pointer-events: none;
+}
+
+form{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
 
 
 .icon{

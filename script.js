@@ -67,3 +67,65 @@ function deleteTodo(c){
     demoarray = demoarray.filter((myItem) => myItem.id !== Number(c))
     renderTodo(emptytodo);
 }
+
+const form = document.querySelector(".formselect");
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const input = document.querySelector(".inputselect");
+    const text = input.value.trim();
+
+    if(text !== ""){
+        addTodo(text);
+        input.value = "";
+    }
+});
+
+const list = document.querySelector(".js-todo-list");
+list.addEventListener("click", (event) => {
+    if(event.target.classList.contains("js-tick")){
+        const itemKey = event.target.parentElement.dataset.key;
+        toggleDone(itemKey);
+    }
+    if (event.target.classList.contains("js-delete-todo")){
+        const itemKey = event.target.parentElement.dataset.key;
+        deleteTodo(itemKey);
+    }
+});
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    const ref = localStorage.getItem("demoarray");
+    if(ref){
+        demoarray = JSON.parse(ref);
+        demoarray.forEach((t)=>{
+            renderTodo(t);
+        });
+    }
+});
+
+const toggleSwitch = document.querySelector(
+    '.theme-switch input[type="checkbox"]'
+);
+
+const currentTheme = localStorage.getItem("theme");
+
+if(currentTheme){
+    document.documentElement.setAttribute("data-theme", cuurrentTheme);
+
+    if(currentTheme === "dark"){
+        toggleSwitch.checked = true;
+    }
+}
+
+function switchTheme(e){
+    if(e.target.checked){
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+    }else{
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+    }
+}
+
+toggleSwitch.addEventListener("chage", switchTheme, false);
