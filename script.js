@@ -14,6 +14,13 @@ function renderTodo(todo) {
         return;
     }
 
+    if(demoarray.length != 0){
+        document.getElementById('clear-button').style.display = "block";
+    }else{
+        document.getElementById('clear-button').style.display = "none";
+    }
+
+
     const isChecked = todo.checked ? "done" : "";
 
     const newList = document.createElement("li");
@@ -49,7 +56,6 @@ function addTodo(x){
     demoarray.push(todoobject);
 
     renderTodo(todoobject);
-    console.log(demoarray);
 }
 
 function toggleDone(b) {
@@ -66,6 +72,17 @@ function deleteTodo(c){
     };
     demoarray = demoarray.filter((myItem) => myItem.id !== Number(c))
     renderTodo(emptytodo);
+
+    if(!demoarray.length){
+        document.getElementById('clear-button').style.display = "none";
+    }
+}
+
+function deleteAllTodo(){
+    while(demoarray.length){
+        deleteTodo(demoarray[0].id);
+    }
+    document.getElementById('clear-button').style.display = "none";
 }
 
 const form = document.querySelector(".formselect");
@@ -93,6 +110,10 @@ list.addEventListener("click", (event) => {
         deleteTodo(itemKey);
     }
 });
+
+const clearButton = document.getElementById("clear-button");
+clearButton.addEventListener("click", deleteAllTodo)
+
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const ref = localStorage.getItem("demoarray");
@@ -128,4 +149,4 @@ function switchTheme(e){
     }
 }
 
-toggleSwitch.addEventListener("chage", switchTheme, false);
+//toggleSwitch.addEventListener("change", switchTheme, false);
