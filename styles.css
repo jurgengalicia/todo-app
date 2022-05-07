@@ -81,7 +81,9 @@ input:focus{
 }
 
 .tick::before{
+    content: "✔️";
     display:inline;
+    display: none;
 }
 
 .delete-todo{
